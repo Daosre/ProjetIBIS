@@ -1,3 +1,4 @@
+const articleRecipe = document.querySelector(".articleRecipe");
 class Meal {
   constructor(id, text, thumb) {
     (this.id = id),
@@ -47,4 +48,14 @@ class Meal {
     articleMeal.appendChild(instructionSection);
     this.mealsArticle.appendChild(articleMeal);
   };
+}
+
+function clearMeals() {
+  const listMeal = document.querySelector("#meals");
+  if (listMeal) {
+    listMeal.remove();
+  }
+  const newListMeal = document.createElement("article");
+  newListMeal.id = "meals";
+  articleRecipe.appendChild(newListMeal);
 }
