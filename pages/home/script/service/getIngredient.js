@@ -1,20 +1,31 @@
+const searchBtn = document.querySelector("#searchBtn");
+
 class IngredientSearch {
-  constructor() {
-    this.ingredientInput = document.querySelector("#ingredient");
-    this.iconSearch = document.querySelector("#search");
-  }
+  constructor() {}
   getMealsbyIngredient = async () => {
+    let ingredientInput = document.querySelector("#ingredient");
+
     await fetch(
-      `https://www.themealdb.com/api/json/v1/1/filter.php?i=${this.ingredientInput.value}`
+      `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredientInput.value}`
     ).then(async (response) => {
+      console.log(response);
+
       let data = await response.json();
-      data.meals.map(() => {
-        const happyMeal = new Meal();
+      console.log(data);
+
+      data.meals.map((meal) => {
+        const happyMeal = new Meal(
+          meal.idMeal,
+          meal.strMeal,
+          meal.strMealThumb
+        );
         happyMeal.insertMeal();
       });
     });
   };
 }
-
 const SearchIngredient = new IngredientSearch();
-SearchIngredient.getMealsbyIngredient("Chicken");
+
+searchBtn.addEventListener("click", () => {
+  SearchIngredient.getMealsbyIngredient();
+});
