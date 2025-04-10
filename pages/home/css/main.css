@@ -170,19 +170,19 @@ button {
 }
 
 .img4 {
-  background-image: url("/assets/img/im4.jpg");
+  background-image: url("../../../public/assets/img/im4.jpg");
 }
 
 .img5 {
-  background-image: url("/assets/img/im5.jpg");
+  background-image: url("../../../public/assets/img/im5.jpg");
 }
 
 .img6 {
-  background-image: url("/assets/img/im6.jpg");
+  background-image: url("../../../public/assets/img/im6.jpg");
 }
 
 .img7 {
-  background-image: url("/assets/img/im7.jpg");
+  background-image: url("../../../public/assets/img/im7.jpg");
 }
 
 .card-front:before {

@@ -10,8 +10,9 @@ class Meal {
     let imgMeal = document.createElement("img");
     let titleMeal = document.createElement("h3");
     imgMeal.src = this.thumb;
-    articleMeal.appendChild(imgMeal);
+    titleMeal.innerText = this.text;
     articleMeal.appendChild(titleMeal);
+    articleMeal.appendChild(imgMeal);
     this.mealsArticle.appendChild(articleMeal);
   };
 }
