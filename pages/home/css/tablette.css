@@ -1,0 +1,24 @@
+@media (min-width: 768px) {
+  .researchRecipe {
+    align-items: center;
+    .ingredient,
+    .categorie,
+    .country {
+      width: 80%;
+      font-size: 14px;
+    }
+  }
+  #meals {
+    align-items: center;
+  }
+  .meal {
+    width: 80%;
+    img {
+      height: 200px;
+      object-fit: cover;
+    }
+  }
+  .ingredient {
+    padding: 3px;
+  }
+}
