@@ -1,4 +1,4 @@
-const category = document.querySelector("#category");
+const category = document.querySelector("#categorie");
 const categoryDefaultValue = country.value;
 class CategorieList {
   constructor() {
@@ -32,7 +32,8 @@ class CategorieList {
 const categorieMeal = new CategorieList();
 categorieMeal.getCategorie();
 category.addEventListener("change", () => {
-  if (country.value != categoryDefaultValue) {
-    countryMeal.getMealsByCategory();
+  if (category.value != categoryDefaultValue) {
+    clearMeals();
+    categorieMeal.getMealsByCategory();
   }
 });

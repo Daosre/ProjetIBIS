@@ -33,6 +33,7 @@ const countryMeal = new CountryList();
 countryMeal.getCountry();
 country.addEventListener("change", () => {
   if (country.value != defaultValue) {
+    clearMeals();
     countryMeal.getMealsByCountry();
   }
 });

@@ -19,5 +19,6 @@ class IngredientSearch {
 const SearchIngredient = new IngredientSearch();
 
 searchBtn.addEventListener("click", () => {
+  clearMeals();
   SearchIngredient.getMealsbyIngredient();
 });
