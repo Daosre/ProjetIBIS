@@ -238,7 +238,7 @@ h2 {
   gap: 40px;
   padding: 0 20px;
 }
-#categorie,
+/* #categorie,
 #country,
 #ingredient {
   background-color: var(--color-orange);
@@ -247,4 +247,24 @@ h2 {
   text-align: center;
   padding: 10px;
   border-radius: 5px;
+} */
+.categorie,
+.country,
+.ingredient,
+#ingredient {
+  background-color: var(--color-orange);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+}
+#ingredient,
+.ingredient {
+  padding: 0;
+}
+#ingredient {
+  width: 100%;
+  &::placeholder {
+    color: white;
+  }
 }
