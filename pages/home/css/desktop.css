@@ -17,9 +17,6 @@
     .meal {
       &:hover section {
         display: block;
-        cursor: pointer;
-        transform: ease-in-out;
-        transition: 1.5s;
       }
       section {
         display: none;
