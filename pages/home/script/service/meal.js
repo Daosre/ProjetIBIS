@@ -11,7 +11,6 @@ class Meal {
       async (response) => {
         let data = await response.json();
         this.insertMeal(data);
-        console.log(data);
       }
     );
   };
