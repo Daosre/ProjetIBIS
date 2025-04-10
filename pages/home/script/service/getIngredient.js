@@ -11,15 +11,11 @@ class IngredientSearch {
       console.log(response);
 
       let data = await response.json();
-      console.log(data);
+      // console.log(data);
 
       data.meals.map((meal) => {
-        const happyMeal = new Meal(
-          meal.idMeal,
-          meal.strMeal,
-          meal.strMealThumb
-        );
-        happyMeal.insertMeal();
+        const happyMeal = new Meal(meal.idMeal, meal.strMeal, meal.strMealThumb);
+        happyMeal.getMoreDetail();
       });
     });
   };
