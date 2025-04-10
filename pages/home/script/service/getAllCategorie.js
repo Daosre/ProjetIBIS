@@ -1,3 +1,5 @@
+const category = document.querySelector("#categorie");
+const categoryDefaultValue = country.value;
 class CategorieList {
   constructor() {
     this.categoriesInput = document.querySelector("#categorie");
@@ -15,6 +17,23 @@ class CategorieList {
       }
     );
   };
+  getMealsByCategory = async () => {
+    await fetch(
+      `https://www.themealdb.com/api/json/v1/1/filter.php?c=${this.categoriesInput.value}`
+    ).then(async (response) => {
+      let data = await response.json();
+      data.meals.map((meal) => {
+        const happyMeal = new Meal(meal.idMeal, meal.strMeal, meal.strMealThumb);
+        happyMeal.getMoreDetail();
+      });
+    });
+  };
 }
 const categorieMeal = new CategorieList();
 categorieMeal.getCategorie();
+category.addEventListener("change", () => {
+  if (category.value != categoryDefaultValue) {
+    clearMeals();
+    categorieMeal.getMealsByCategory();
+  }
+});
