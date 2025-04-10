@@ -42,7 +42,7 @@ class Meal {
     titleInstructionSection.innerText = "Instructions :";
     instructionSection.appendChild(titleInstructionSection);
     let textInstruction = document.createElement("p");
-    textInstruction.innerText = data.strInstructions;
+    textInstruction.innerText = data.meals[0].strInstructions;
     instructionSection.appendChild(textInstruction);
     articleMeal.appendChild(instructionSection);
     this.mealsArticle.appendChild(articleMeal);
