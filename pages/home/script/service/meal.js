@@ -11,7 +11,6 @@ class Meal {
       async (response) => {
         let data = await response.json();
         this.insertMeal(data);
-        console.log(data);
       }
     );
   };
@@ -42,10 +41,20 @@ class Meal {
     let listIngredient = document.createElement("ul");
     for (let i = 1; i < 21; i++) {
       if (data.meals[0][`strIngredient${i}`]) {
+        let divIngredient = document.createElement("div");
+        divIngredient.classList.add("divIngredient");
         let ingredient = document.createElement("li");
-        ingredient.innerHTML = data.meals[0][`strIngredient${i}`];
-        // data.meals[0][`strIngredient${i}`] + "<br>" + data.meals[0][`strMeasure${i}`];
-        listIngredient.appendChild(ingredient);
+        let nameIngredient = data.meals[0][`strIngredient${i}`];
+        ingredient.innerText = nameIngredient;
+        let quantity = data.meals[0][`strMeasure${i}`];
+        ingredient.addEventListener("mouseenter", () => {
+          showTooltip(nameIngredient, quantity);
+        });
+        ingredient.addEventListener("mouseleave", () => {
+          hideTooltip();
+        });
+        divIngredient.appendChild(ingredient);
+        listIngredient.appendChild(divIngredient);
       }
     }
     ingredientSection.appendChild(listIngredient);
