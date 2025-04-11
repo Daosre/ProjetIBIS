@@ -7,10 +7,13 @@ class IngredientSearch {
     await fetch(
       `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredientInput.value}`
     ).then(async (response) => {
-      console.log(response);
       let data = await response.json();
       data.meals.map((meal) => {
-        const happyMeal = new Meal(meal.idMeal, meal.strMeal, meal.strMealThumb);
+        const happyMeal = new Meal(
+          meal.idMeal,
+          meal.strMeal,
+          meal.strMealThumb
+        );
         happyMeal.getMoreDetail();
       });
     });
