@@ -1,39 +1,50 @@
+// récupération de l'element select country
 const country = document.querySelector("#country");
-const defaultValue = country.value;
+//valeur par défaut
+const countryDefaultValue = country.value;
 class CountryList {
   constructor() {
     this.countryInput = document.querySelector("#country");
   }
+  //récupération de la list des pays
   getCountry = async () => {
     await fetch("https://www.themealdb.com/api/json/v1/1/list.php?a=list").then(
       async (response) => {
         let data = await response.json();
-        data.meals.map((meal) => {
+        data.meals.map((country) => {
+          //on insert une option par pays
           let country = document.createElement("option");
-          country.value = meal.strArea;
-          country.innerText = meal.strArea;
+          country.value = country.strArea;
+          country.innerText = country.strArea;
           this.countryInput.appendChild(country);
         });
       }
     );
   };
+  //récupération de la liste de recette en fonction du pays
   getMealsByCountry = async () => {
     await fetch(
       `https://www.themealdb.com/api/json/v1/1/filter.php?a=${this.countryInput.value}`
     ).then(async (response) => {
       let data = await response.json();
       data.meals.map((meal) => {
+        // création d'instance par recette dans la liste de recette
         const happyMeal = new Meal(meal.idMeal, meal.strMeal, meal.strMealThumb);
+        //récupération des détails de la recette
         happyMeal.getMoreDetail();
       });
     });
   };
 }
+
 const countryMeal = new CountryList();
 countryMeal.getCountry();
+//au moment du changement de la valeur de la selection du pays
 country.addEventListener("change", () => {
-  if (country.value != defaultValue) {
+  if (country.value != countryDefaultValue) {
+    //retire les anciennes recettes si elles existe.
     clearMeals();
+    //récupération de la list de recette en fonction du pays.
     countryMeal.getMealsByCountry();
   }
 });

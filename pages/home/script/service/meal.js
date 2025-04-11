@@ -1,3 +1,4 @@
+//récupération de l'article qui contient toutes les recettes
 const articleRecipe = document.querySelector(".articleRecipe");
 class Meal {
   constructor(id, text, thumb) {
@@ -6,15 +7,17 @@ class Meal {
       (this.thumb = thumb),
       (this.mealsArticle = document.querySelector("#meals"));
   }
+  //récupération des détails de la recette
   getMoreDetail = async () => {
     await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${this.id}`).then(
       async (response) => {
         let data = await response.json();
+        //on insert les recettes
         this.insertMeal(data);
-        console.log(data);
       }
     );
   };
+  //Ne pas ouvrir, cette function permet d'inséré la recette
   insertMeal = async (data) => {
     let articleMeal = document.createElement("article");
     articleMeal.classList.add("meal");
@@ -42,10 +45,20 @@ class Meal {
     let listIngredient = document.createElement("ul");
     for (let i = 1; i < 21; i++) {
       if (data.meals[0][`strIngredient${i}`]) {
+        let divIngredient = document.createElement("div");
+        divIngredient.classList.add("divIngredient");
         let ingredient = document.createElement("li");
-        ingredient.innerHTML = data.meals[0][`strIngredient${i}`];
-        // data.meals[0][`strIngredient${i}`] + "<br>" + data.meals[0][`strMeasure${i}`];
-        listIngredient.appendChild(ingredient);
+        let nameIngredient = data.meals[0][`strIngredient${i}`];
+        ingredient.innerText = nameIngredient;
+        let quantity = data.meals[0][`strMeasure${i}`];
+        ingredient.addEventListener("mouseenter", () => {
+          showTooltip(nameIngredient, quantity);
+        });
+        ingredient.addEventListener("mouseleave", () => {
+          hideTooltip();
+        });
+        divIngredient.appendChild(ingredient);
+        listIngredient.appendChild(divIngredient);
       }
     }
     ingredientSection.appendChild(listIngredient);
@@ -61,7 +74,7 @@ class Meal {
     this.mealsArticle.appendChild(articleMeal);
   };
 }
-
+//Supprime les anciennes recettes
 function clearMeals() {
   const listMeal = document.querySelector("#meals");
   if (listMeal) {
