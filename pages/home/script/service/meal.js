@@ -1,3 +1,4 @@
+//récupération de l'article qui contient toutes les recettes
 const articleRecipe = document.querySelector(".articleRecipe");
 class Meal {
   constructor(id, text, thumb) {
@@ -6,14 +7,17 @@ class Meal {
       (this.thumb = thumb),
       (this.mealsArticle = document.querySelector("#meals"));
   }
+  //récupération des détails de la recette
   getMoreDetail = async () => {
     await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${this.id}`).then(
       async (response) => {
         let data = await response.json();
+        //on insert les recettes
         this.insertMeal(data);
       }
     );
   };
+  //Ne pas ouvrir, cette function permet d'inséré la recette
   insertMeal = async (data) => {
     let articleMeal = document.createElement("article");
     articleMeal.classList.add("meal");
@@ -70,7 +74,7 @@ class Meal {
     this.mealsArticle.appendChild(articleMeal);
   };
 }
-
+//Supprime les anciennes recettes
 function clearMeals() {
   const listMeal = document.querySelector("#meals");
   if (listMeal) {
