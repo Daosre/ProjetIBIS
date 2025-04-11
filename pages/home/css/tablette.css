@@ -21,4 +21,9 @@
   .ingredient {
     padding: 3px;
   }
+  .countryContainer {
+    img {
+      object-fit: contain;
+    }
+  }
 }
