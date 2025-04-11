@@ -11,6 +11,7 @@ class Meal {
       async (response) => {
         let data = await response.json();
         this.insertMeal(data);
+        console.log(data);
       }
     );
   };
@@ -42,7 +43,8 @@ class Meal {
     for (let i = 1; i < 21; i++) {
       if (data.meals[0][`strIngredient${i}`]) {
         let ingredient = document.createElement("li");
-        ingredient.innerText = data.meals[0][`strIngredient${i}`];
+        ingredient.innerHTML = data.meals[0][`strIngredient${i}`];
+        // data.meals[0][`strIngredient${i}`] + "<br>" + data.meals[0][`strMeasure${i}`];
         listIngredient.appendChild(ingredient);
       }
     }
