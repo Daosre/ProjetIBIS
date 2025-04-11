@@ -24,7 +24,7 @@ body {
   padding: 50px;
   border-radius: 10px;
   max-width: 100vw;
-  background-image: url("/assets/img/im2.jpg");
+  background-image: url("../../../public/assets/img/im2.jpg");
   background-position: center top;
   background-size: cover;
 }
@@ -220,4 +220,88 @@ button {
 
 .card:hover .card-front {
   opacity: 0;
+}
+h2 {
+  font-family: "Montserrat";
+}
+.researchRecipe {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 0 20px;
+}
+.categorie,
+.country,
+.ingredient,
+#ingredient {
+  background-color: var(--color-orange);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+}
+.ingredient {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+#ingredient {
+  padding: 0;
+  &::placeholder {
+    color: white;
+  }
+}
+#meals {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  color: black;
+  .meal {
+    padding: 0 0 60px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: linear-gradient(#fff, #9e9e9e);
+    border-radius: 0 0 5px 5px;
+    section {
+      display: flex;
+      padding: 0 20px;
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+      ul {
+        display: grid;
+        list-style: none;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+    }
+    p {
+      line-height: 25px;
+      font-weight: 200;
+    }
+  }
+  img {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+  }
+  h3 {
+    color: black;
+    text-decoration: underline;
+    font-size: 24px;
+  }
+  h4 {
+    font-size: 20px;
+  }
+}
+.countryContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  img {
+    width: 33%;
+  }
 }
