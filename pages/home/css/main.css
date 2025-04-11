@@ -4,7 +4,6 @@
   margin: 0;
   padding: 0;
 }
-
 body {
   background: #ffffff;
   color: #4caf50;
@@ -234,7 +233,7 @@ h2 {
 .country,
 .ingredient,
 #ingredient {
-  background-color: var(--color-orange);
+  background-color: #ff7300;
   color: white;
   text-align: center;
   padding: 10px;
@@ -283,7 +282,6 @@ h2 {
     }
   }
   img {
-    width: 100%;
     border-radius: 5px 5px 0 0;
   }
   h3 {
