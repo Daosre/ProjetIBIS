@@ -13,10 +13,10 @@ class CountryList {
         let data = await response.json();
         data.meals.map((country) => {
           //on insert une option par pays
-          let country = document.createElement("option");
-          country.value = country.strArea;
-          country.innerText = country.strArea;
-          this.countryInput.appendChild(country);
+          let countryOption = document.createElement("option");
+          countryOption.value = country.strArea;
+          countryOption.innerText = country.strArea;
+          this.countryInput.appendChild(countryOption);
         });
       }
     );
@@ -29,7 +29,11 @@ class CountryList {
       let data = await response.json();
       data.meals.map((meal) => {
         // création d'instance par recette dans la liste de recette
-        const happyMeal = new Meal(meal.idMeal, meal.strMeal, meal.strMealThumb);
+        const happyMeal = new Meal(
+          meal.idMeal,
+          meal.strMeal,
+          meal.strMealThumb
+        );
         //récupération des détails de la recette
         happyMeal.getMoreDetail();
       });
