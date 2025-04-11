@@ -11,7 +11,6 @@ class Meal {
       async (response) => {
         let data = await response.json();
         this.insertMeal(data);
-        console.log(data);
       }
     );
   };
@@ -20,10 +19,21 @@ class Meal {
     articleMeal.classList.add("meal");
     let imgMeal = document.createElement("img");
     imgMeal.src = this.thumb;
+    imgMeal.alt = `picture of ${this.text}`;
     articleMeal.appendChild(imgMeal);
     let titleMeal = document.createElement("h3");
     titleMeal.innerText = this.text;
     articleMeal.appendChild(titleMeal);
+    let countryDiv = document.createElement("div");
+    countryDiv.classList.add("countryContainer");
+    let flagCountry = document.createElement("img");
+    flagCountry.src = await apiCountry(data.meals[0].strArea);
+    flagCountry.alt = `flag of ${data.meals[0].strArea}`;
+    countryDiv.appendChild(flagCountry);
+    let nameCountry = document.createElement("p");
+    nameCountry.innerText = data.meals[0].strArea;
+    countryDiv.appendChild(nameCountry);
+    articleMeal.appendChild(countryDiv);
     let ingredientSection = document.createElement("section");
     let titleIngredientSection = document.createElement("h4");
     titleIngredientSection.innerText = "Ingredient List :";
